@@ -36,8 +36,16 @@ M.general = {
 		["jj"] = { "<Esc>", "Escept insert mode", opts = { nowait = true } },
 	},
 	v = {
-		["<C-c>"] = { "\"+y", "copy" }
 	}
+}
+
+M.osc52 = {
+  n = {
+    ["<C-c>"] = { function () require("osc52").copy_operator() end, "copy", opts={ expr=true } }
+  },
+  v = {
+		["<C-c>"] = { function () require("osc52").copy_visual() end, "copy" }
+  }
 }
 
 return M

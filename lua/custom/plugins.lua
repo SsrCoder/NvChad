@@ -57,6 +57,14 @@ local plugins = {
 		end
 	},
 
+  {
+    "ojroques/nvim-osc52",
+    opts = {},
+    config = function (_, opts)
+      require("osc52").setup(opts)
+    end,
+  },
+
 	{
 		"github/copilot.vim",
 		event = "VeryLazy",
