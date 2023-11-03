@@ -6,6 +6,7 @@ M.disabled = {
     ["<C-i>"] = "",
     ["<tab>"] = "",
     ["<S-tab>"] = "",
+    ["<leader>ra"] = "",
   }
 }
 
@@ -17,6 +18,8 @@ M.general = {
 		["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
 		["<C-f>"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
 		["<C-t>"] = { "<cmd> Telescope projects <CR>", "find projects" },
+
+    ["<leader>n"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 		-- ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
 		-- ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
 		-- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
@@ -46,6 +49,21 @@ M.osc52 = {
   v = {
 		["<C-c>"] = { function () require("osc52").copy_visual() end, "copy" }
   }
+}
+
+M.refactoring = {
+  v = {
+    ["<leader>rf"] = { function () require("refactoring").refactor("Extract Function") end, "Extract Function", opts = { noremap = true, silent = true }},
+    ["<leader>rv"] = { function () require("refactoring").refactor("Extract Variable") end, "Extract Variable", opts = { noremap = true, silent = true }},
+    ["<leader>ri"] = { function () require("refactoring").refactor("Inline Variable") end, "Inline Variable", opts = { noremap = true, silent = true }},
+    ["<leader>rr"] = { function () require('telescope').extensions.refactoring.refactors() end, "Show Refactors", opts = { noremap = true }},
+  },
+  n = {
+    ["<leader>ri"] = { function () require("refactoring").refactor("Inline Variable") end, "Inline Variable", opts = { noremap = true, silent = true }},
+    ["<leader>rb"] = { function () require("refactoring").refactor("Extract Block") end, "Extract Block", opts = { noremap = true, silent = true }},
+    ["<leader>rr"] = { function () require('telescope').extensions.refactoring.refactors() end, "Show Refactors", opts = { noremap = true }},
+    ["<leader>rn"] = { function () require("nvchad_ui.renamer").open() end, "LSP rename" },
+  },
 }
 
 return M

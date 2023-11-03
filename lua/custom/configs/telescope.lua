@@ -10,7 +10,7 @@ local options = {
     }
   },
 
-  extensions_list = { "themes", "terms", "projects" },
+  extensions_list = { "themes", "terms", "projects", "refactoring" },
 }
 
 return options
